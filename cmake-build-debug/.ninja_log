@@ -1,0 +1,12 @@
+# ninja log v5
+249	299	1697509792970652689	Tarea_Extraclase_3	edcf8fbd039e94c8
+0	249	1697509792922652202	CMakeFiles/Tarea_Extraclase_3.dir/main.cpp.o	ba4eba6dd20a8532
+0	32	1697510777625255271	build.ninja	8cbfa9a493c68aa0
+0	374	1697511010367546533	CMakeFiles/Tarea_Extraclase_3.dir/main.cpp.o	ba4eba6dd20a8532
+374	601	1697511010595548634	Tarea_Extraclase_3	edcf8fbd039e94c8
+1	213	1697511062992024225	CMakeFiles/Tarea_Extraclase_3.dir/main.cpp.o	ba4eba6dd20a8532
+213	262	1697511063044024689	Tarea_Extraclase_3	edcf8fbd039e94c8
+0	214	1697511419058924866	CMakeFiles/Tarea_Extraclase_3.dir/main.cpp.o	ba4eba6dd20a8532
+214	265	1697511419118925320	Tarea_Extraclase_3	edcf8fbd039e94c8
+1	217	1697511618180375595	CMakeFiles/Tarea_Extraclase_3.dir/main.cpp.o	ba4eba6dd20a8532
+217	265	1697511618224375908	Tarea_Extraclase_3	edcf8fbd039e94c8
