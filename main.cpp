@@ -1,5 +1,6 @@
 #include <iostream>
 #include <bitset>
+#include <vector>
 
 // Function to calculate even parity bit for a given data word
 bool calculateEvenParity(const std::bitset<7>& data) {
@@ -34,6 +35,24 @@ std::bitset<16> performCRC(const std::bitset<7>& data, const std::bitset<8>& pol
     return encodedData;
 }
 
+std::bitset<7> calculateLRC(const std::bitset<7>& data) {
+    std::bitset<7> lrc = 0;
+    for (size_t i = 0; i < 7; ++i) {
+        lrc ^= data[i];
+    }
+    return lrc;
+}
+
+uint8_t calculateXORChecksum(const std::vector<uint8_t>& data) {
+    uint8_t checksum = 0;
+
+    for (const uint8_t& byte : data) {
+        checksum ^= byte;
+    }
+
+    return checksum;
+}
+
 int main() {
     std::bitset<7> data = 0b1101101;  // Example data word
 
@@ -52,6 +71,39 @@ int main() {
     std::cout << "Data: " << data2 << std::endl;
     std::cout << "CRC Polynomial: " << polynomial << std::endl;
     std::cout << "Encoded Data (with CRC): " << encodedData << std::endl;
+
+    std::bitset<7> data3 = 0b1101101;  // Example data word
+
+    std::bitset<7> lrc = calculateLRC(data3);
+
+    std::cout << "Data: " << data3 << std::endl;
+    std::cout << "LRC: " << lrc << std::endl;
+
+// Sample data to calculate checksum
+    std::vector<uint8_t> data4 = {0x55, 0xAA, 0x12, 0x34, 0x78};
+
+    // Calculate the checksum
+    uint8_t checksum = calculateXORChecksum(data4);
+
+    // Display the data and checksum
+    std::cout << "Data: ";
+    for (const uint8_t& byte : data4) {
+        std::cout << std::hex << static_cast<int>(byte) << " ";
+    }
+    std::cout << "\nChecksum: 0x" << std::hex << static_cast<int>(checksum) << std::endl;
+
+
+    // Introduce an error by changing a byte
+    data4[2] = 0x11; // Change 0x12 to 0x11
+
+// Recalculate the checksum
+    checksum = calculateXORChecksum(data4);
+
+    std::cout << "Data with error: ";
+    for (const uint8_t& byte : data4) {
+        std::cout << std::hex << static_cast<int>(byte) << " ";
+    }
+    std::cout << "\nChecksum with error: 0x" << std::hex << static_cast<int>(checksum) << std::endl;
 
     return 0;
 }
